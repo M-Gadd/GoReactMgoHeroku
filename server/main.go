@@ -7,6 +7,7 @@ import (
 
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )
@@ -20,9 +21,14 @@ func main() {
 
 	r := gin.Default()
 
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
 	// Do the following:
 	// In a command window:
-	// set MONGOLAB_URL=mongodb://heroku_x6vpdmxg:Password@ds135514.mlab.com:35514/heroku_x6vpdmxg
+	// set MONGOLAB_URI=mongodb://heroku_x6vpdmxg:Password@ds135514.mlab.com:35514/heroku_x6vpdmxg
 	// heroku_x6vpdmxg is my username, replace the same with yours. Type in your password.
 	uri := os.Getenv("MONGODB_URI")
 	if uri == "" {
@@ -40,7 +46,7 @@ func main() {
 	sess.SetSafe(&mgo.Safe{})
 
 	if xxx, err := sess.DatabaseNames(); err == nil {
-		fmt.Println("I AM DATABASE NAMES:", xxx)
+		fmt.Println("I AM DATABASE NAMES:", xxx[0])
 	}
 
 	collection := sess.DB("heroku_x6vpdmxg").C("users")
