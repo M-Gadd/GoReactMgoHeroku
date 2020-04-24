@@ -30,6 +30,8 @@ func main() {
 		os.Exit(1)
 	}
 
+	// mongodb: //heroku_x6vpdmxg:j1c3s3n9kotkkjr61jbg09s0aq@ds135514.mlab.com:35514/heroku_x6vpdmxg
+
 	sess, err := mgo.Dial(uri)
 	if err != nil {
 		fmt.Printf("Can't connect to mongo, go error %v\n", err)
@@ -39,7 +41,11 @@ func main() {
 
 	sess.SetSafe(&mgo.Safe{})
 
-	collection := sess.DB("godata").C("user")
+	if xxx, err := sess.DatabaseNames(); err == nil {
+		fmt.Println("I AM DATABASE NAMES:", xxx)
+	}
+
+	collection := sess.DB("heroku_x6vpdmxg").C("users")
 
 	err = collection.Insert(&Person{"Stefan Klaste", "klaste@posteo.de"},
 		&Person{"Nishant Modak", "modak.nishant@gmail.com"},
