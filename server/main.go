@@ -22,15 +22,13 @@ func main() {
 
 	// Do the following:
 	// In a command window:
-	// set MONGOLAB_URL=mongodb://IndianGuru:dbpassword@ds051523.mongolab.com:51523/godata
-	// IndianGuru is my username, replace the same with yours. Type in your password.
+	// set MONGOLAB_URL=mongodb://heroku_x6vpdmxg:Password@ds135514.mlab.com:35514/heroku_x6vpdmxg
+	// heroku_x6vpdmxg is my username, replace the same with yours. Type in your password.
 	uri := os.Getenv("MONGODB_URI")
 	if uri == "" {
 		fmt.Println("no connection string provided")
 		os.Exit(1)
 	}
-
-	// mongodb: //heroku_x6vpdmxg:j1c3s3n9kotkkjr61jbg09s0aq@ds135514.mlab.com:35514/heroku_x6vpdmxg
 
 	sess, err := mgo.Dial(uri)
 	if err != nil {
