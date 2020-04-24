@@ -24,7 +24,7 @@ func main() {
 	// In a command window:
 	// set MONGOLAB_URL=mongodb://IndianGuru:dbpassword@ds051523.mongolab.com:51523/godata
 	// IndianGuru is my username, replace the same with yours. Type in your password.
-	uri := os.Getenv("MONGOLAB_URL")
+	uri := os.Getenv("MONGODB_URI")
 	if uri == "" {
 		fmt.Println("no connection string provided")
 		os.Exit(1)
