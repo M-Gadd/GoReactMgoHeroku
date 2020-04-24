@@ -2,7 +2,7 @@
 
 
 A simple App for education purposes done with:
-  - *Go* for the backend 
+  - #Go# for the backend 
   - "React" for  the front end 
   - "MongoDb" for the Database
   - "Heroku" For deployment 
